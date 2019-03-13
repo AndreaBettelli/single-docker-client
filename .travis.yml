@@ -1,8 +1,11 @@
+#.travis.yml
+
 sudo: required
 services:
   - docker
 
 before_install:
+  - find Gemfile* -type f | xargs touch -t 7805200000
   - docker build -t coralgo/docker-react -f Dockerfile.dev .
 
 script:
