@@ -10,5 +10,6 @@ RUN npm run build
 # fase 1 (builder) solo e soltanto la dir /app/build.
 # Tutto il resto viene scartato.
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 
