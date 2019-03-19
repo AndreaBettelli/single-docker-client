@@ -5,18 +5,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t coralgo/docker-react -f Dockerfile.dev .
+  - docker build -t coralgo/single-docker-client -f Dockerfile.dev .
 
 script:
-  - docker run coralgo/docker-react npm run test -- --coverage
+  - docker run coralgo/single-docker-client npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
   region: "eu-central-1"
-  app: "docker-react"
-  env: "DockerReact-env"
+  app: "single-docker-client"
+  env: "SingleDockerClient-env"
   bucket_name: "elasticbeanstalk-eu-central-1-054632996260"
-  bucket_path: "docker-react"
+  bucket_path: "single-docker-client"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
